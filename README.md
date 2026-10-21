@@ -26,7 +26,7 @@ next to RisingOS's own `-ota.zip` name for the same file.
 | Volume slider | Gradient on, custom mode, `#A100F1` → `#CFBAFF` |
 | About phone | "Catalyxx version" row reading `Catalyxx-<version>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
-| Updater | Reads `Haywood69/catalyxx_ota` instead of RisingOS's OTA repo |
+| Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of RisingOS's OTA repo |
 | Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
