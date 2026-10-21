@@ -5,8 +5,8 @@
 
 # catalyze <device> [user|userdebug|eng]
 #
-# Lunch catalyxx_<device>, the way RisingOS's riseup lunches lineage_<device>.
-# Build afterwards with 'rise b' as usual.
+# Lunch catalyxx_<device>, the way LineageOS's breakfast lunches
+# lineage_<device>. Build afterwards with 'm bacon'.
 function catalyze() {
     local device="$1"
     local build_type="${2:-userdebug}"

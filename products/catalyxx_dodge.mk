@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Catalyxx for the OnePlus 13 (dodge): RisingOS's lineage_dodge with the
-# Catalyxx layer on top. lineage_dodge itself is untouched, so the RisingOS
-# build from the same tree comes out exactly as before.
+# Catalyxx for the OnePlus 13 (dodge): LineageOS's lineage_dodge with the
+# Catalyxx layer on top. lineage_dodge itself is untouched, so a plain
+# LineageOS build from the same tree comes out exactly as before.
 
 # Part of this file's body, so it is read before any inherited makefile;
 # see config/version.mk for why that matters.
