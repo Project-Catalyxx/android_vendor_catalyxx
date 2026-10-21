@@ -4,12 +4,12 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <!-- Point the updater at Catalyxx's own OTA metadata instead of RisingOS's, so a
-         Catalyxx build is never offered a RisingOS build. Kept under the Project-Catalyxx
-         organization: whoever can publish there can offer an update. -->
-    <string name="updater_server_url_gapps" translatable="false">https://raw.githubusercontent.com/Project-Catalyxx/catalyxx_ota/main/GAPPS/{device}.json</string>
-    <string name="updater_server_url_core" translatable="false">https://raw.githubusercontent.com/Project-Catalyxx/catalyxx_ota/main/CORE/{device}.json</string>
-    <string name="updater_server_url_vanilla" translatable="false">https://raw.githubusercontent.com/Project-Catalyxx/catalyxx_ota/main/VANILLA/{device}.json</string>
-    <string name="updater_server_url_microg" translatable="false">https://raw.githubusercontent.com/Project-Catalyxx/catalyxx_ota/main/MICROG/{device}.json</string>
-    <string name="menu_changelog_url" translatable="false">https://raw.githubusercontent.com/Project-Catalyxx/catalyxx_ota/main/changelogs/%1$s.txt</string>
+    <!-- Point the updater at Catalyxx's own OTA metadata instead of LineageOS's, so a
+         Catalyxx build is never offered an official LineageOS build. Those ship
+         LineageOS's newer firmware, not the pinned one. Kept under the Project-Catalyxx
+         organization: whoever can publish there can offer an update. The updater
+         fills in {device}; the file uses LineageOS's API v2 format. -->
+    <string name="updater_server_url" translatable="false">https://raw.githubusercontent.com/Project-Catalyxx/catalyxx_ota/main/{device}.json</string>
+    <!-- Opened in the browser; %1$s is the device -->
+    <string name="menu_changelog_url" translatable="false">https://github.com/Project-Catalyxx/catalyxx_ota/blob/main/changelogs/%1$s.txt</string>
 </resources>

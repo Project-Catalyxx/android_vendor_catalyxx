@@ -7,9 +7,9 @@
     package="org.catalyxx.overlay.updater">
 
     <!-- Priority 10 so these win over the priority-1 auto-generated RROs
-         that LineageOS and RisingOS ship for the same targets. -->
+         that LineageOS ships for the same targets. -->
     <overlay
-        android:targetPackage="com.rising.updater"
+        android:targetPackage="org.lineageos.updater"
         android:isStatic="true"
         android:priority="10" />
 </manifest>
