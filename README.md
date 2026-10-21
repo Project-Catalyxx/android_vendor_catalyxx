@@ -27,6 +27,7 @@ next to RisingOS's own `-ota.zip` name for the same file.
 | About phone | "Catalyxx version" row reading `Catalyxx-<version>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of RisingOS's OTA repo |
+| About card | Maintainer line reads "by Brian_OP13" instead of "unknown" |
 | Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
@@ -68,7 +69,7 @@ is `settings put system volume_slider_gradient 0`.
 config/version.mk     identity; included from each product's body, before its inherits
 config/common.mk      the layer: overlays and ro.catalyxx.* props
 products/             catalyxx_<device>.mk + AndroidProducts.mk
-overlays/             runtime resource overlays (framework, SettingsProvider, lineage-sdk, Updater)
+overlays/             runtime resource overlays (framework, Settings, SettingsProvider, lineage-sdk, Updater)
 vendorsetup.sh        catalyze
 ```
 
