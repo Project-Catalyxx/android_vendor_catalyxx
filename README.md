@@ -23,7 +23,7 @@ next to RisingOS's own `-ota.zip` name for the same file.
 | Where | What |
 |---|---|
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
-| Volume slider | Gradient on, custom mode, `#A100F1` → `#CFBAFF` |
+| Volume slider | Gradient on, custom mode, `#CFBAFF` at the quiet end deepening to `#A100F1` at the loud end |
 | About phone | "Catalyxx version" row reading `Catalyxx-<version>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of RisingOS's OTA repo |
@@ -54,11 +54,11 @@ existing install. To get them on an existing install, run these from `adb shell`
 settings put secure theme_customization_overlay_packages '{"android.theme.customization.system_palette":"874EFF","android.theme.customization.accent_color":"874EFF","android.theme.customization.color_source":"preset","android.theme.customization.theme_style":"RAINBOW"}'
 settings put system volume_slider_gradient 1
 settings put system custom_gradient_color_mode 1
-settings put system custom_gradient_start_color -6225679
-settings put system custom_gradient_end_color -3163393
+settings put system custom_gradient_start_color -3163393
+settings put system custom_gradient_end_color -6225679
 ```
 
-The two negative numbers are `#FFA100F1` and `#FFCFBAFF` as signed 32-bit ints.
+The two negative numbers are `#FFCFBAFF` and `#FFA100F1` as signed 32-bit ints.
 RisingOS has no settings screen for the gradient yet, so the way to turn it off
 is `settings put system volume_slider_gradient 0`.
 
