@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Settings > About phone > Android version: title of the ro.lineage.version row -->
+    <string name="lineage_version">Catalyxx version</string>
+</resources>

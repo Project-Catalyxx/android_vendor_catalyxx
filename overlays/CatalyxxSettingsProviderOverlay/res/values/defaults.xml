@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Volume slider gradient, on by default in custom mode: the Catalyxx signature
+         violet fading into lavender tone 80, the dark-theme primary of the system
+         palette. Needs the def_* loader in SettingsProvider's DatabaseHelper. -->
+    <bool name="def_volume_slider_gradient">true</bool>
+    <integer name="def_custom_gradient_color_mode">1</integer>
+    <color name="def_custom_gradient_start_color">#FFA100F1</color>
+    <color name="def_custom_gradient_end_color">#FFCFBAFF</color>
+</resources>

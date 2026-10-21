@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Point the updater at Catalyxx's own OTA metadata instead of RisingOS's, so a
+         Catalyxx build is never offered a RisingOS build. Kept under an account the
+         maintainer controls: whoever can publish here can offer an update. -->
+    <string name="updater_server_url_gapps" translatable="false">https://raw.githubusercontent.com/Haywood69/catalyxx_ota/main/GAPPS/{device}.json</string>
+    <string name="updater_server_url_core" translatable="false">https://raw.githubusercontent.com/Haywood69/catalyxx_ota/main/CORE/{device}.json</string>
+    <string name="updater_server_url_vanilla" translatable="false">https://raw.githubusercontent.com/Haywood69/catalyxx_ota/main/VANILLA/{device}.json</string>
+    <string name="updater_server_url_microg" translatable="false">https://raw.githubusercontent.com/Haywood69/catalyxx_ota/main/MICROG/{device}.json</string>
+    <string name="menu_changelog_url" translatable="false">https://raw.githubusercontent.com/Haywood69/catalyxx_ota/main/changelogs/%1$s.txt</string>
+</resources>
