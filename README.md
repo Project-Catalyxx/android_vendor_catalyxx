@@ -27,6 +27,7 @@ flashable zip comes out as
 |---|---|
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
 | Volume slider | Gradient on, custom mode, `#CFBAFF` at the quiet end deepening to `#A100F1` at the loud end |
+| Volume dialog | Media volume shown in percent under the slider |
 | About phone | "Project Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
@@ -50,9 +51,10 @@ build:
 | bacon: Let a product name its package | The zip is otherwise always `lineage-<version>.zip` |
 | config: Accept OFFICIAL as a build type | Any type but RELEASE, NIGHTLY, SNAPSHOT and EXPERIMENTAL resets to UNOFFICIAL |
 
-And four in `frameworks/base`, carried in `Project-Catalyxx/android_frameworks_base`.
-The first three are Pranav Vashi's volume slider gradient, cherry-picked with his
-authorship from RisingOS-Revived, which carries it:
+And these in `frameworks/base`, carried in `Project-Catalyxx/android_frameworks_base`.
+The features are cherry-picked with their authors' names from RisingOS-Revived,
+which carries them: Pranav Vashi's volume slider gradient and haptics toggle, and
+Ghosuto's volume percentage:
 
 | Commit | Why |
 |---|---|
@@ -60,10 +62,14 @@ authorship from RisingOS-Revived, which carries it:
 | SystemUI: Add custom gradient start/end color support for volume slider | Custom mode and its start and end colours |
 | SystemUI: Fix up gradient related glitch in volume slider | |
 | SettingsProvider: Load volume slider gradient defaults from resources | SystemUI hard-codes the defaults; this lets `CatalyxxSettingsProviderOverlay` set them |
+| SystemUI: VolumeDialog: Add toggle for haptic feedback [1/2] | `Settings.Secure.VOLUME_DIALOG_HAPTIC_FEEDBACK`; the slider's haptics stay on unless it is 0 |
+| SystemUI: Add volume percentage [1/2] | `Settings.System.SHOW_VOLUME_PERCENTAGE` and the percentage under the slider |
+| SystemUI: Don't require the volume percentage view | Keeps SystemUI up if the horizontal dialog, which has no percentage view, is ever enabled |
+| SettingsProvider: Load the volume percentage default from resources | So the overlay can turn the percentage on |
 
 ## First boot only
 
-The palette and the gradient are first-boot defaults, like every SettingsProvider
+The palette, the gradient and the percentage are first-boot defaults, like every SettingsProvider
 `def_*` value. They apply after a clean flash, not when you dirty-flash over an
 existing install. To get them on an existing install, run these from `adb shell`:
 
@@ -73,11 +79,14 @@ settings put system volume_slider_gradient 1
 settings put system custom_gradient_color_mode 1
 settings put system custom_gradient_start_color -3163393
 settings put system custom_gradient_end_color -6225679
+settings put system show_volume_percentage 1
 ```
 
 The two negative numbers are `#FFCFBAFF` and `#FFA100F1` as signed 32-bit ints.
-There is no settings screen for the gradient yet, so the way to turn it off is
-`settings put system volume_slider_gradient 0`.
+There is no settings screen for these yet. To turn them off:
+`settings put system volume_slider_gradient 0`,
+`settings put system show_volume_percentage 0`, and for the slider's vibration
+`settings put secure volume_dialog_haptic_feedback 0`.
 
 ## Layout
 

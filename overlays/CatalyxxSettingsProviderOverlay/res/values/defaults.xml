@@ -14,4 +14,8 @@
     <integer name="def_custom_gradient_color_mode">1</integer>
     <color name="def_custom_gradient_start_color">#FFCFBAFF</color>
     <color name="def_custom_gradient_end_color">#FFA100F1</color>
+
+    <!-- The media volume in percent under the volume dialog's slider. Needs the
+         def_show_volume_percentage loader in SettingsProvider's DatabaseHelper. -->
+    <bool name="def_show_volume_percentage">true</bool>
 </resources>
