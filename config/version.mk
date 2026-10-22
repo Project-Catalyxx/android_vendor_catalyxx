@@ -15,7 +15,10 @@
 # vendor/lineage/config/version.mk, which is read later; '=' expands it when
 # it is used, by which point it exists.
 
-CATALYXX_VERSION := 1.0
+# <Android version>.<Catalyxx release>: 17.0 is the first Catalyxx on Android 17.
+# Bump the second number for each Catalyxx release (17.1, 17.2, ...), and move
+# to <next Android>.0 when the base moves to the next Android version.
+CATALYXX_VERSION := 17.0
 
 CATALYXX_BUILD_VERSION = $(CATALYXX_VERSION)-$(LINEAGE_VERSION_SUFFIX)
 CATALYXX_DISPLAY_VERSION = $(CATALYXX_BUILD_VERSION)
