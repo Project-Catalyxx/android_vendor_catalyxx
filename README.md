@@ -28,6 +28,7 @@ flashable zip comes out as
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
 | About phone | "Project Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
+| Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of LineageOS's servers |
 | Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
 
@@ -37,7 +38,7 @@ gradient, logo and boot animation), because Monet would tone it down.
 
 ## Changes needed outside this repo
 
-Catalyxx needs three small commits in `vendor/lineage`, carried in
+Catalyxx needs four small commits in `vendor/lineage`, carried in
 `Project-Catalyxx/android_vendor_lineage`. None of them changes a LineageOS
 build:
 
@@ -46,6 +47,7 @@ build:
 | envsetup: Treat catalyxx_ products as Lineage builds | Without it, `LINEAGE_BUILD` is empty and the build skips BoardConfigLineage.mk (the kernel) and Lineage's sepolicy |
 | config: Let a product set the version strings | `LINEAGE_VERSION` is assigned unconditionally, and a second `ro.lineage.version` is a build error |
 | bacon: Let a product name its package | The zip is otherwise always `lineage-<version>.zip` |
+| config: Accept OFFICIAL as a build type | Any type but RELEASE, NIGHTLY, SNAPSHOT and EXPERIMENTAL resets to UNOFFICIAL |
 
 ## First boot only
 

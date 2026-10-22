@@ -20,6 +20,16 @@
 # to <next Android>.0 when the base moves to the next Android version.
 CATALYXX_VERSION := 17.0
 
+# OFFICIAL only when the build is signed with Project Catalyxx's own release
+# key: the tree's keys (make-keys.sh writes them to vendor/lineage-priv/keys)
+# must hold the certificate published here. Any other build of this source,
+# including one with someone else's keys, stays UNOFFICIAL. The certificate is
+# public: it is inside every signed app and zip anyway.
+CATALYXX_RELEASE_CERT := vendor/catalyxx/config/releasekey.x509.pem
+ifneq ($(shell cmp -s $(CATALYXX_RELEASE_CERT) vendor/lineage-priv/keys/releasekey.x509.pem && echo yes),)
+    LINEAGE_BUILDTYPE := OFFICIAL
+endif
+
 CATALYXX_BUILD_VERSION = $(CATALYXX_VERSION)-$(LINEAGE_VERSION_SUFFIX)
 CATALYXX_DISPLAY_VERSION = $(CATALYXX_BUILD_VERSION)
 
