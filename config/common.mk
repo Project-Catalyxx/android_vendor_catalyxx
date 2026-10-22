@@ -14,6 +14,7 @@
 PRODUCT_PACKAGES += \
     CatalyxxFrameworkOverlay \
     CatalyxxLineageSdkOverlay \
+    CatalyxxSettingsProviderOverlay \
     CatalyxxUpdaterOverlay
 
 # Properties

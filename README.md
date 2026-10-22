@@ -26,6 +26,7 @@ flashable zip comes out as
 | Where | What |
 |---|---|
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
+| Volume slider | Gradient on, custom mode, `#CFBAFF` at the quiet end deepening to `#A100F1` at the loud end |
 | About phone | "Project Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
@@ -33,8 +34,8 @@ flashable zip comes out as
 | Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
-used at full strength only where it is drawn directly (later the volume
-gradient, logo and boot animation), because Monet would tone it down.
+used at full strength only where it is drawn directly (the volume gradient,
+and later the logo and boot animation), because Monet would tone it down.
 
 ## Changes needed outside this repo
 
@@ -49,15 +50,34 @@ build:
 | bacon: Let a product name its package | The zip is otherwise always `lineage-<version>.zip` |
 | config: Accept OFFICIAL as a build type | Any type but RELEASE, NIGHTLY, SNAPSHOT and EXPERIMENTAL resets to UNOFFICIAL |
 
+And four in `frameworks/base`, carried in `Project-Catalyxx/android_frameworks_base`.
+The first three are Pranav Vashi's volume slider gradient, cherry-picked with his
+authorship from RisingOS-Revived, which carries it:
+
+| Commit | Why |
+|---|---|
+| SystemUI: Add volume slider gradient customization | The gradient and `Settings.System.VOLUME_SLIDER_GRADIENT` |
+| SystemUI: Add custom gradient start/end color support for volume slider | Custom mode and its start and end colours |
+| SystemUI: Fix up gradient related glitch in volume slider | |
+| SettingsProvider: Load volume slider gradient defaults from resources | SystemUI hard-codes the defaults; this lets `CatalyxxSettingsProviderOverlay` set them |
+
 ## First boot only
 
-The palette is a first-boot default. It applies after a clean flash, not when
-you dirty-flash over an existing install. To get it on an existing install, run
-this from `adb shell`:
+The palette and the gradient are first-boot defaults, like every SettingsProvider
+`def_*` value. They apply after a clean flash, not when you dirty-flash over an
+existing install. To get them on an existing install, run these from `adb shell`:
 
 ```sh
 settings put secure theme_customization_overlay_packages '{"android.theme.customization.system_palette":"874EFF","android.theme.customization.accent_color":"874EFF","android.theme.customization.color_source":"preset","android.theme.customization.theme_style":"RAINBOW"}'
+settings put system volume_slider_gradient 1
+settings put system custom_gradient_color_mode 1
+settings put system custom_gradient_start_color -3163393
+settings put system custom_gradient_end_color -6225679
 ```
+
+The two negative numbers are `#FFCFBAFF` and `#FFA100F1` as signed 32-bit ints.
+There is no settings screen for the gradient yet, so the way to turn it off is
+`settings put system volume_slider_gradient 0`.
 
 ## Layout
 
@@ -65,7 +85,7 @@ settings put secure theme_customization_overlay_packages '{"android.theme.custom
 config/version.mk     identity; included from each product's body, before its inherits
 config/common.mk      the layer: overlays and ro.catalyxx.* props
 products/             catalyxx_<device>.mk + AndroidProducts.mk
-overlays/             runtime resource overlays (framework, lineage-sdk, Updater)
+overlays/             runtime resource overlays (framework, lineage-sdk, SettingsProvider, Updater)
 vendorsetup.sh        catalyze
 ```
 
