@@ -21,9 +21,20 @@ PRODUCT_PACKAGES += \
     CatalyxxSettingsProviderOverlay \
     CatalyxxUpdaterOverlay
 
+# Boot animation, in place of LineageOS's: vendor/lineage/config/BoardConfigSoong.mk
+# hands TARGET_BOOTANIMATION to the bootanimation.zip genrule as a prebuilt, which
+# copies it without tracking it, so a new animation needs a new file name.
+TARGET_BOOTANIMATION := vendor/catalyxx/bootanimation/bootanimation-1.zip
+
+# Default wallpaper, home and lock screen: WallpaperManager opens the file named
+# by ro.config.wallpaper before any built-in default.
+PRODUCT_COPY_FILES += \
+    vendor/catalyxx/wallpaper/catalyxx_wallpaper.jpg:$(TARGET_COPY_OUT_PRODUCT)/media/wallpaper/catalyxx_wallpaper.jpg
+
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.catalyxx.version=$(CATALYXX_VERSION) \
     ro.catalyxx.build.version=$(CATALYXX_BUILD_VERSION) \
     ro.catalyxx.display.version=$(CATALYXX_DISPLAY_VERSION) \
-    ro.catalyxx.maintainer=$(CATALYXX_MAINTAINER)
+    ro.catalyxx.maintainer=$(CATALYXX_MAINTAINER) \
+    ro.config.wallpaper=/product/media/wallpaper/catalyxx_wallpaper.jpg

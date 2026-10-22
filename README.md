@@ -26,6 +26,8 @@ flashable zip comes out as
 | Where | What |
 |---|---|
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
+| Boot animation | The Project Catalyxx logo: the intro once, a calm starfield looping while the device boots, a fade to black. `bootanimation/`, silent |
+| Wallpaper | Purple-to-black gradient with the Catalyxx X, home and lock screen, set at first boot. `wallpaper/` |
 | Volume slider | Gradient on, custom mode, `#CFBAFF` at the quiet end deepening to `#A100F1` at the loud end |
 | Volume dialog | Media volume shown in percent under the slider |
 | Settings | **Catalyxx Lab** ("Mix your own formula"), a card after Connected devices: switches and colors for all of the above. From `packages/apps/CatalyxxLab`. |
@@ -38,6 +40,23 @@ flashable zip comes out as
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
 used at full strength only where it is drawn directly (the volume gradient,
 and later the logo and boot animation), because Monet would tone it down.
+
+## Boot animation and wallpaper
+
+Boot animation and wallpaper by **Dapper Dan** & **dro223**.
+
+- `bootanimation/bootanimation-1.zip` replaces LineageOS's through `TARGET_BOOTANIMATION`.
+  `bootanimation/make_bootanimation.py` builds it from `bootanimation_source.mp4` (their
+  video, muted): 1440x3168 at 24 fps, frames stored as JPEG at the video's own resolution
+  (bootanimation stretches each frame to the size in `desc.txt`), the intro to 6.5 s, the
+  rest looping with its last 0.75 s crossfaded into the frames before the loop so the seam
+  doesn't show.
+- **To replace it, save the new zip under the next number** (`bootanimation-2.zip`) and
+  point `TARGET_BOOTANIMATION` at it. LineageOS's genrule copies the file without tracking
+  it, so a new zip under the same name would not be picked up.
+- `wallpaper/catalyxx_wallpaper.jpg` (1440x3168) is installed to `/product/media/wallpaper/`
+  and named by `ro.config.wallpaper`, which WallpaperManager opens before any built-in
+  default. Its gradient is rebuilt at full size from the 768x1376 original, the X enlarged.
 
 ## Changes needed outside this repo
 
@@ -70,7 +89,7 @@ Ghosuto's volume percentage:
 
 ## First boot only
 
-The palette, the gradient and the percentage are first-boot defaults, like every SettingsProvider
+The palette, the wallpaper, the gradient and the percentage are first-boot defaults, like every SettingsProvider
 `def_*` value. They apply after a clean flash, not when you dirty-flash over an
 existing install. To get them on an existing install, run these from `adb shell`:
 
@@ -96,6 +115,8 @@ config/version.mk     identity; included from each product's body, before its in
 config/common.mk      the layer: overlays and ro.catalyxx.* props
 products/             catalyxx_<device>.mk + AndroidProducts.mk
 overlays/             runtime resource overlays (framework, lineage-sdk, SettingsProvider, Updater)
+bootanimation/        boot animation zip, its source video and the script that builds it
+wallpaper/            default wallpaper
 vendorsetup.sh        catalyze
 ```
 
