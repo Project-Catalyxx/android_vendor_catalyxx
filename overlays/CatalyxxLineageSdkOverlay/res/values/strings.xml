@@ -5,5 +5,5 @@
 -->
 <resources>
     <!-- Settings > About phone > Android version: title of the ro.lineage.version row -->
-    <string name="lineage_version">Catalyxx version</string>
+    <string name="lineage_version">Project Catalyxx version</string>
 </resources>

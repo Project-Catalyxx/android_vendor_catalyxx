@@ -21,7 +21,7 @@ CATALYXX_BUILD_VERSION = $(CATALYXX_VERSION)-$(LINEAGE_VERSION_SUFFIX)
 CATALYXX_DISPLAY_VERSION = $(CATALYXX_BUILD_VERSION)
 
 # Settings > About phone > Android version shows ro.lineage.version, under the
-# "Catalyxx version" title from CatalyxxLineageSdkOverlay
+# "Project Catalyxx version" title from CatalyxxLineageSdkOverlay
 LINEAGE_VERSION = $(CATALYXX_BUILD_VERSION)
 LINEAGE_DISPLAY_VERSION = $(CATALYXX_DISPLAY_VERSION)
 

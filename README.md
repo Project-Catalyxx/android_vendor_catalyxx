@@ -26,7 +26,7 @@ flashable zip comes out as
 | Where | What |
 |---|---|
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
-| About phone | "Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
+| About phone | "Project Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of LineageOS's servers |
 | Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
