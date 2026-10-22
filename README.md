@@ -28,6 +28,7 @@ flashable zip comes out as
 | System palette | Monet seed pinned to lavender `#874EFF`, style RAINBOW, set at first boot. It does not follow the wallpaper. |
 | Volume slider | Gradient on, custom mode, `#CFBAFF` at the quiet end deepening to `#A100F1` at the loud end |
 | Volume dialog | Media volume shown in percent under the slider |
+| Settings | **Catalyxx Lab** ("Mix your own formula"), a card after Connected devices: switches and colors for all of the above. From `packages/apps/CatalyxxLab`. |
 | About phone | "Project Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
 | Zip name | `Catalyxx-…zip` |
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
@@ -83,7 +84,7 @@ settings put system show_volume_percentage 1
 ```
 
 The two negative numbers are `#FFCFBAFF` and `#FFA100F1` as signed 32-bit ints.
-There is no settings screen for these yet. To turn them off:
+Catalyxx Lab, under Settings, turns each of these on and off. From adb:
 `settings put system volume_slider_gradient 0`,
 `settings put system show_volume_percentage 0`, and for the slider's vibration
 `settings put secure volume_dialog_haptic_feedback 0`.

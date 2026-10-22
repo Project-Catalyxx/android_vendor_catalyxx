@@ -10,6 +10,10 @@
 # build/make/core/node_fns.mk), so device/... is read before this file and the
 # LineageOS variables expanded below already exist.
 
+# Catalyxx Lab: the Catalyxx settings, a card on Settings' home screen
+PRODUCT_PACKAGES += \
+    CatalyxxLab
+
 # Overlays
 PRODUCT_PACKAGES += \
     CatalyxxFrameworkOverlay \
