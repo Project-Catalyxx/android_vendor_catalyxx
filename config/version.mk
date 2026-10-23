@@ -26,6 +26,12 @@ CATALYXX_VERSION := 17.0
 # the first number of CATALYXX_VERSION.
 CATALYXX_CODENAME := Chlorine
 
+# GApps (config/gms.mk). Set here, in the body, because vendor/lineage's
+# common.mk reads it too (to step aside from pixel-style's storage manager
+# prop) and is inherited before vendor/catalyxx/config/common.mk. Set it to
+# false before including this file for a build without GApps.
+WITH_GMS ?= true
+
 # OFFICIAL only when the build is signed with Project Catalyxx's own release
 # key: the tree's keys (make-keys.sh writes them to vendor/lineage-priv/keys)
 # must hold the certificate published here. Any other build of this source,
