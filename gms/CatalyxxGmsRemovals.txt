@@ -1,0 +1,2 @@
+The CatalyxxGmsRemovals module installs nothing: it only carries the overrides
+that leave GApps out of the build. The list is in Android.mk, next to this file.

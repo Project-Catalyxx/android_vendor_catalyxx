@@ -35,6 +35,7 @@ flashable zip comes out as
 | Zip name | `Catalyxx-…zip` |
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of LineageOS's servers |
+| GApps | RisingOS-Revived's `vendor/gms` (synced unforked through the local manifest), its full set less the Pixel-only, US-carrier and system extras listed in `gms/Android.mk`. LineageOS's package installer, avatar picker and NFC Tags app stay. `config/gms.mk`; `WITH_GMS := false` builds without |
 | Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is

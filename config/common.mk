@@ -14,6 +14,9 @@
 PRODUCT_PACKAGES += \
     CatalyxxLab
 
+# GApps
+$(call inherit-product, vendor/catalyxx/config/gms.mk)
+
 # Overlays
 PRODUCT_PACKAGES += \
     CatalyxxFrameworkOverlay \
