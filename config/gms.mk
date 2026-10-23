@@ -22,4 +22,14 @@ $(call inherit-product, vendor/gms/gms_full.mk)
 PRODUCT_PACKAGES += \
     CatalyxxGmsRemovals
 
+# vendor/gms's makefiles list optional <uses-library> entries that some of its
+# APKs don't declare (org.apache.http.legacy on TurboPrebuilt, for one), which
+# fails the build's manifest check. Rising relaxes the check for GApps too:
+# a mismatched app just isn't compiled ahead of time.
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+
+# Google's apps update themselves from the Play Store, which throws away
+# anything compiled for them at build time, so don't spend product space on it.
+DONT_DEXPREOPT_PREBUILTS := true
+
 endif
