@@ -20,6 +20,12 @@
 # to <next Android>.0 when the base moves to the next Android version.
 CATALYXX_VERSION := 17.0
 
+# Each Android version's releases take the name of the element with that
+# atomic number. 17 is chlorine, the textbook catalyst: one atom breaks down
+# around 100,000 ozone molecules and comes out unchanged. Change it along with
+# the first number of CATALYXX_VERSION.
+CATALYXX_CODENAME := Chlorine
+
 # OFFICIAL only when the build is signed with Project Catalyxx's own release
 # key: the tree's keys (make-keys.sh writes them to vendor/lineage-priv/keys)
 # must hold the certificate published here. Any other build of this source,
@@ -31,12 +37,14 @@ ifneq ($(shell cmp -s $(CATALYXX_RELEASE_CERT) vendor/lineage-priv/keys/releasek
 endif
 
 CATALYXX_BUILD_VERSION = $(CATALYXX_VERSION)-$(LINEAGE_VERSION_SUFFIX)
-CATALYXX_DISPLAY_VERSION = $(CATALYXX_BUILD_VERSION)
+CATALYXX_DISPLAY_VERSION = $(CATALYXX_VERSION)-$(CATALYXX_CODENAME)-$(LINEAGE_VERSION_SUFFIX)
 
 # Settings > About phone > Android version shows ro.lineage.version, under the
-# "Project Catalyxx version" title from CatalyxxLineageSdkOverlay
-LINEAGE_VERSION = $(CATALYXX_BUILD_VERSION)
+# "Project Catalyxx version" title from CatalyxxLineageSdkOverlay, so that one
+# carries the codename. Recovery still finds the date in it (-<YYYYMMDD>-).
+LINEAGE_VERSION = $(CATALYXX_DISPLAY_VERSION)
 LINEAGE_DISPLAY_VERSION = $(CATALYXX_DISPLAY_VERSION)
 
-# The flashable zip: Catalyxx-<version>-<date>-<buildtype>-<device>.zip
-LINEAGE_TARGET_PACKAGE = $(PRODUCT_OUT)/Catalyxx-$(LINEAGE_VERSION).zip
+# The flashable zip, without the codename:
+# Catalyxx-<version>-<date>-<buildtype>-<device>.zip
+LINEAGE_TARGET_PACKAGE = $(PRODUCT_OUT)/Catalyxx-$(CATALYXX_BUILD_VERSION).zip

@@ -31,12 +31,12 @@ flashable zip comes out as
 | Volume slider | Gradient on, custom mode, `#CFBAFF` at the quiet end deepening to `#A100F1` at the loud end |
 | Volume dialog | Media volume shown in percent under the slider |
 | Settings | **Catalyxx Lab** ("Mix your own formula"), a card after Connected devices: switches and colors for all of the above. From `packages/apps/CatalyxxLab`. |
-| About phone | "Project Catalyxx version" row reading `<version>-<date>-<type>-<device>` |
+| About phone | "Project Catalyxx version" row reading `<version>-<codename>-<date>-<type>-<device>` (17.x is Chlorine, element 17) |
 | Zip name | `Catalyxx-…zip` |
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of LineageOS's servers |
 | GApps | RisingOS-Revived's `vendor/gms` (synced unforked through the local manifest), its full set less the Pixel-only, US-carrier and system extras listed in `gms/Android.mk`. LineageOS's package installer, avatar picker and NFC Tags app stay. `config/gms.mk`; `WITH_GMS := false` builds without |
-| Properties | `ro.catalyxx.version`, `.build.version`, `.display.version`, `.maintainer` |
+| Properties | `ro.catalyxx.version`, `.codename`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
 used at full strength only where it is drawn directly (the volume gradient,

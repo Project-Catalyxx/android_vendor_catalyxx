@@ -37,6 +37,7 @@ PRODUCT_COPY_FILES += \
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.catalyxx.version=$(CATALYXX_VERSION) \
+    ro.catalyxx.codename=$(CATALYXX_CODENAME) \
     ro.catalyxx.build.version=$(CATALYXX_BUILD_VERSION) \
     ro.catalyxx.display.version=$(CATALYXX_DISPLAY_VERSION) \
     ro.catalyxx.maintainer=$(CATALYXX_MAINTAINER) \
