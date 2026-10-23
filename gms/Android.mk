@@ -12,6 +12,12 @@ LOCAL_PATH := $(call my-dir)
 #
 # Matched against vendor/gms's folder names, which are its module names, so an
 # app that comes back under a new version number is still left out.
+#
+# An app left out here still drops what it overrides, because the build reads
+# overrides from PRODUCT_PACKAGES before removing anything. So never list one
+# that replaces something Android can't boot without: GooglePackageInstaller
+# overrides PackageInstaller, and with neither on board the package manager
+# refuses to start ("There must be exactly one installer").
 catalyxx_gms_removed := \
     AndroidGlassesCoreStub \
     AvatarPickerGoogle \
@@ -23,7 +29,6 @@ catalyxx_gms_removed := \
     DreamlinerPrebuilt* \
     DreamlinerUpdater \
     FamilySpacePrebuilt* \
-    GooglePackageInstaller \
     KidsSupervisionStub \
     PulsePrebuilt \
     RelationshipsPrebuilt* \
