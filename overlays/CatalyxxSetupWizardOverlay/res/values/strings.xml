@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- The Pixel setup wizard's own names for the OS, which RisingOS's overlay sets
+         to risingOS -->
+    <string name="bc_welcome_message">Welcome to Catalyxx</string>
+    <string name="deferred_setup_wizard_title">Finish setting up Catalyxx</string>
+    <string name="device_name">Catalyxx</string>
+    <string name="setup_wizard_title">Catalyxx Setup</string>
+</resources>

@@ -22,6 +22,11 @@ $(call inherit-product, vendor/google/overlays/ThemeIcons/config.mk)
 # Google apps' overlays, sounds and vibrations
 $(call inherit-product, vendor/pixel-style/config/common.mk)
 
+# pixel-style's setup wizard overlay names the OS risingOS ("risingOS Setup",
+# "Finish setting up risingOS"); this one, on top of it, says Catalyxx
+PRODUCT_PACKAGES += \
+    CatalyxxSetupWizardOverlay
+
 # vendor/gms's makefiles list optional <uses-library> entries that some of its
 # APKs don't declare (org.apache.http.legacy on TurboPrebuilt, for one), which
 # fails the build's manifest check. Rising relaxes the check for GApps too:

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.catalyxx.overlay.setupwizard">
+
+    <!-- Priority 230 so these win over RisingOS's PixelSetupWizardOverlayExpressive
+         (vendor/pixel-style, priority 220), which names the setup wizard risingOS. -->
+    <overlay
+        android:targetPackage="com.google.android.pixel.setupwizard"
+        android:targetName="PixelSetupWizard"
+        android:isStatic="true"
+        android:priority="230" />
+</manifest>
