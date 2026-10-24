@@ -27,6 +27,10 @@ $(call inherit-product, vendor/pixel-style/config/common.mk)
 PRODUCT_PACKAGES += \
     CatalyxxSetupWizardOverlay
 
+# Settings' search bar, pointed at Google's SettingsIntelligence
+PRODUCT_PACKAGES += \
+    CatalyxxSettingsGmsOverlay
+
 # vendor/gms's makefiles list optional <uses-library> entries that some of its
 # APKs don't declare (org.apache.http.legacy on TurboPrebuilt, for one), which
 # fails the build's manifest check. Rising relaxes the check for GApps too:

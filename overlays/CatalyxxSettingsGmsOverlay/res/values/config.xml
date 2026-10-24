@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- GApps builds ship Google's SettingsIntelligence, which replaces LineageOS's
+         com.android.settings.intelligence. Settings hides its search bar when the
+         package named here isn't installed. -->
+    <string name="config_settingsintelligence_package_name" translatable="false">com.google.android.settings.intelligence</string>
+</resources>
