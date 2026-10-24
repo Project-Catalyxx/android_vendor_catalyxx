@@ -29,6 +29,10 @@ PRODUCT_PACKAGES += \
 # copies it without tracking it, so a new animation needs a new file name.
 TARGET_BOOTANIMATION := vendor/catalyxx/bootanimation/bootanimation-1.zip
 
+# Full OTA payload in zstd instead of xz: recovery unpacks it several times faster
+# when sideloading. The switch is read by Project Catalyxx's build/make.
+TARGET_OTA_ENABLE_REPLACE_ZSTD := true
+
 # Default wallpaper, home and lock screen: WallpaperManager opens the file named
 # by ro.config.wallpaper before any built-in default.
 PRODUCT_COPY_FILES += \
