@@ -20,6 +20,11 @@ $(call inherit-product, vendor/catalyxx/config/gms.mk)
 # Fonts: the font overlays Catalyxx Lab's font picker offers, and their fonts
 $(call inherit-product, packages/overlays/Lineage/fonts/fonts.mk)
 
+# Weather for the lock screen clocks and widgets: OmniJaws, from RisingOS.
+# It builds with sdk/ax_*, AxionOS's libraries from RisingOS's vendor/addons.
+PRODUCT_PACKAGES += \
+    OmniJaws
+
 # Overlays
 PRODUCT_PACKAGES += \
     CatalyxxFrameworkOverlay \
