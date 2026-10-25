@@ -17,6 +17,9 @@ PRODUCT_PACKAGES += \
 # GApps
 $(call inherit-product, vendor/catalyxx/config/gms.mk)
 
+# Fonts: the font overlays Catalyxx Lab's font picker offers, and their fonts
+$(call inherit-product, packages/overlays/Lineage/fonts/fonts.mk)
+
 # Overlays
 PRODUCT_PACKAGES += \
     CatalyxxFrameworkOverlay \
