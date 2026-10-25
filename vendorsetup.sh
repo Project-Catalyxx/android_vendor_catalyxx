@@ -26,6 +26,13 @@ function catalyze() {
             ;;
     esac
 
+    # A new build number for every build. Without one, Soong only rewrites
+    # build.prop (and ro.build.version.incremental, its date) when something
+    # else in it changes, and a phone flashed with a later build keeps its
+    # cached copy of every built-in app's manifest: new permissions and
+    # activities are missed.
+    export BUILD_NUMBER="eng.${USER:0:6}.$(date +%Y%m%d.%H%M%S)"
+
     source "$(gettop)/vendor/lineage/vars/aosp_target_release"
     lunch "catalyxx_${device}-${aosp_target_release}-${build_type}"
 }
