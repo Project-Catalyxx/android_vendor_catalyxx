@@ -31,6 +31,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CatalyxxSettingsGmsOverlay
 
+# QuickSwitch: the Pixel Launcher stays the default home app; Launcher3
+# and Lawnchair can be picked in Catalyxx Lab > User interface > Home app
+PRODUCT_PACKAGES += \
+    Lawnchair \
+    LawnchairOverlay \
+    Lawnicons
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.default_launcher=1 \
+    persist.sys.quickswitch_pixel_shipped=1 \
+    persist.sys.quickswitch_lawnchair_shipped=1
+
 # vendor/gms's makefiles list optional <uses-library> entries that some of its
 # APKs don't declare (org.apache.http.legacy on TurboPrebuilt, for one), which
 # fails the build's manifest check. Rising relaxes the check for GApps too:
