@@ -4,4 +4,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/catalyxx_dodge.mk
+    $(LOCAL_DIR)/catalyxx_dodge.mk \
+    $(LOCAL_DIR)/catalyxx_salami.mk

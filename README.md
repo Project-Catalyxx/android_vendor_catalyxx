@@ -63,7 +63,8 @@ Only flags that something reads are listed. RisingOS's dodge tree also sets
 | `TARGET_INCLUDE_LIVE_WALLPAPERS` | `true` | `vendor/gms` | Adds Pixel's wallpaper app (`PixelWallpapers2026`) |
 
 dodge sets `TARGET_ENABLE_BLUR`, `SURFACE_FLINGER_BOOST` and
-`TARGET_EXCLUDES_AUDIOFX` to `true`.
+`TARGET_EXCLUDES_AUDIOFX` to `true`. salami sets `TARGET_ENABLE_BLUR` and
+`SURFACE_FLINGER_BOOST`, and keeps AudioFX: it has no Dolby app to replace it.
 
 ## Boot animation and wallpaper
 
