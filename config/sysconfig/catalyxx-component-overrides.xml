@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<config>
+    <!-- LineageOS Trust is not shipped (vendor/lineage no longer declares
+         org.lineageos.trust), so hide the empty page LineageParts would
+         still inject into Settings > Privacy. -->
+    <component-override package="org.lineageos.lineageparts">
+        <component class=".trust.TrustPreferences" enabled="false" />
+    </component-override>
+</config>

@@ -49,6 +49,11 @@ TARGET_OTA_ENABLE_REPLACE_ZSTD := true
 PRODUCT_COPY_FILES += \
     vendor/catalyxx/wallpaper/catalyxx_wallpaper.jpg:$(TARGET_COPY_OUT_PRODUCT)/media/wallpaper/catalyxx_wallpaper.jpg
 
+# Component overrides: hides the Settings entry of LineageOS Trust, which
+# vendor/lineage no longer ships.
+PRODUCT_COPY_FILES += \
+    vendor/catalyxx/config/sysconfig/catalyxx-component-overrides.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/catalyxx-component-overrides.xml
+
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.catalyxx.version=$(CATALYXX_VERSION) \
