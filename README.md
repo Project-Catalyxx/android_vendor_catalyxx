@@ -42,6 +42,28 @@ Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
 used at full strength only where it is drawn directly (the volume gradient,
 and later the logo and boot animation), because Monet would tone it down.
 
+## Device flags
+
+A device sets these in the body of its `products/catalyxx_<device>.mk`, before
+the `inherit-product` lines. The names are the ones RisingOS and other
+LineageOS-based ROMs use, so a device tree's settings from those carry over.
+Only flags that something reads are listed. RisingOS's dodge tree also sets
+`TARGET_CUSTOM_UDFPS`, `TARGET_USES_OPLUS_FACEUNLOCK`,
+`TARGET_FACE_UNLOCK_SUPPORTED`, `TARGET_SUPPORTED_REFRESH_RATES` and
+`BYPASS_CHARGE_SUPPORTED`, but nothing reads them, there or here.
+
+| Flag | Default | Read by | What it does |
+|---|---|---|---|
+| `TARGET_ENABLE_BLUR` | `false` | `config/flags.mk` | Blur behind the shade, quick settings and dialogs (`ro.surface_flinger.supports_background_blur=1`) |
+| `SURFACE_FLINGER_BOOST` | `false` | `config/flags.mk` | SurfaceFlinger keeps at least 135/1024 CPU performance (`ro.surface_flinger.uclamp.min=135`) |
+| `WITH_GMS` | `true` | `config/gms.mk` | GApps; `false` builds without (set in `config/version.mk`) |
+| `TARGET_EXCLUDES_AUDIOFX` | `false` | LineageOS `config/common_mobile_full.mk` | Leaves out LineageOS's AudioFX |
+| `TARGET_SUPPORTS_QUICK_TAP` | `true` | `vendor/gms` | Adds its `quick_tap` package |
+| `TARGET_INCLUDE_LIVE_WALLPAPERS` | `true` | `vendor/gms` | Adds Pixel's wallpaper app (`PixelWallpapers2026`) |
+
+dodge sets `TARGET_ENABLE_BLUR`, `SURFACE_FLINGER_BOOST` and
+`TARGET_EXCLUDES_AUDIOFX` to `true`.
+
 ## Boot animation and wallpaper
 
 Boot animation and wallpaper by **Dapper Dan** & **dro223**.
@@ -114,6 +136,7 @@ Catalyxx Lab, under Settings, turns each of these on and off. From adb:
 ```
 config/version.mk     identity; included from each product's body, before its inherits
 config/common.mk      the layer: overlays and ro.catalyxx.* props
+config/flags.mk       what the device flags switch on (see Device flags)
 products/             catalyxx_<device>.mk + AndroidProducts.mk
 overlays/             runtime resource overlays (framework, lineage-sdk, SettingsProvider, Updater)
 bootanimation/        boot animation zip, its source video and the script that builds it
@@ -122,6 +145,6 @@ vendorsetup.sh        catalyze
 ```
 
 To add a device, copy `products/catalyxx_dodge.mk` to `catalyxx_<device>.mk`,
-change the inherited `lineage_<device>.mk`, `PRODUCT_NAME` and maintainer, and
-list it in `products/AndroidProducts.mk`. Keep anything device-specific out of
+change the inherited `lineage_<device>.mk`, `PRODUCT_NAME`, maintainer and
+device flags, and list it in `products/AndroidProducts.mk`. Keep anything device-specific out of
 `config/` and `overlays/`, so every device gets the same Catalyxx.

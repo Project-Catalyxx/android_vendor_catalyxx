@@ -12,6 +12,12 @@
 include vendor/catalyxx/config/version.mk
 CATALYXX_MAINTAINER := Brian_OP13
 
+# Device flags; README.md lists them all
+TARGET_ENABLE_BLUR := true
+SURFACE_FLINGER_BOOST := true
+# Dolby's app (packages/apps/LunarisDolby) replaces AudioFX
+TARGET_EXCLUDES_AUDIOFX := true
+
 $(call inherit-product, device/oneplus/dodge/lineage_dodge.mk)
 $(call inherit-product, vendor/catalyxx/config/common.mk)
 

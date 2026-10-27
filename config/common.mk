@@ -10,6 +10,9 @@
 # build/make/core/node_fns.mk), so device/... is read before this file and the
 # LineageOS variables expanded below already exist.
 
+# Device flags (TARGET_ENABLE_BLUR, SURFACE_FLINGER_BOOST, ...)
+$(call inherit-product, vendor/catalyxx/config/flags.mk)
+
 # Catalyxx Lab: the Catalyxx settings, a card on Settings' home screen
 PRODUCT_PACKAGES += \
     CatalyxxLab
