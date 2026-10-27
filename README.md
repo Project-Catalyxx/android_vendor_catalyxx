@@ -19,7 +19,7 @@ m bacon
 `catalyze <device> [user|userdebug|eng]` is defined in `vendorsetup.sh` and
 works the way LineageOS's `breakfast` does for `lineage_<device>`. The
 flashable zip comes out as
-`out/target/product/<device>/Catalyxx-<version>-<date>-<type>-<device>.zip`.
+`out/target/product/<device>/Catalyxx-<version>-<date>-<type>-<device>-<GAPPS|MICROG|VANILLA>.zip`.
 
 ## What it changes
 
@@ -35,7 +35,7 @@ flashable zip comes out as
 | Zip name | `Catalyxx-…zip` |
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of LineageOS's servers |
-| GApps | Rising's GApps setup exactly: RisingOS-Revived's `vendor/gms` (full set), `vendor/pixel-style` (Pixel setup props, Google app overlays, sounds) and `ThemeIcons`, all synced unforked through the local manifest. Rising's own SettingsGoogle/SystemUIGoogle are not included (they don't build on LineageOS). The removal list in `gms/Android.mk` is switched off. `config/gms.mk`; `WITH_GMS := false` builds without |
+| GApps | Rising's GApps setup exactly: RisingOS-Revived's `vendor/gms` (full set), `vendor/pixel-style` (Pixel setup props, Google app overlays, sounds) and `ThemeIcons`, all synced unforked through the local manifest. Rising's own SettingsGoogle/SystemUIGoogle are not included (they don't build on LineageOS). The removal list in `gms/Android.mk` is switched off. `config/gms.mk`; `WITH_GMS := false` builds without, `WITH_MICROG := true` builds with microG instead |
 | Properties | `ro.catalyxx.version`, `.codename`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
@@ -57,6 +57,7 @@ Only flags that something reads are listed. RisingOS's dodge tree also sets
 | `TARGET_ENABLE_BLUR` | `false` | `config/flags.mk` | Blur behind the shade, quick settings and dialogs (`ro.surface_flinger.supports_background_blur=1`) |
 | `SURFACE_FLINGER_BOOST` | `false` | `config/flags.mk` | SurfaceFlinger keeps at least 135/1024 CPU performance (`ro.surface_flinger.uclamp.min=135`) |
 | `WITH_GMS` | `true` | `config/gms.mk` | GApps; `false` builds without (set in `config/version.mk`) |
+| `WITH_MICROG` | `false` | `config/gms.mk` | microG (`vendor/microg`: GmsCore, FakeStore, F-Droid) in place of GApps; turns `WITH_GMS` off. One build: `WITH_MICROG=true m bacon`. Needs a userdebug build: LineageOS allows microG's signature spoofing only on debuggable builds |
 | `TARGET_EXCLUDES_AUDIOFX` | `false` | LineageOS `config/common_mobile_full.mk` | Leaves out LineageOS's AudioFX |
 | `TARGET_SUPPORTS_QUICK_TAP` | `true` | `vendor/gms` | Adds its `quick_tap` package |
 | `TARGET_INCLUDE_LIVE_WALLPAPERS` | `true` | `vendor/gms` | Adds Pixel's wallpaper app (`PixelWallpapers2026`) |

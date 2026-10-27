@@ -32,6 +32,21 @@ CATALYXX_CODENAME := Chlorine
 # false before including this file for a build without GApps.
 WITH_GMS ?= true
 
+# microG in place of GApps (vendor/microg, Project Catalyxx's copy of
+# RisingOS's): set WITH_MICROG := true before including this file, or build
+# with WITH_MICROG=true m bacon (WITH_GMS=false m bacon: neither). LineageOS
+# lets microG spoof Google's signature only on userdebug and eng builds
+# (ComputerEngine.isMicrogSigned in frameworks/base), so not on user builds.
+WITH_MICROG ?= false
+ifeq ($(WITH_MICROG),true)
+    WITH_GMS := false
+    CATALYXX_PACKAGE_TYPE := MICROG
+else ifeq ($(WITH_GMS),true)
+    CATALYXX_PACKAGE_TYPE := GAPPS
+else
+    CATALYXX_PACKAGE_TYPE := VANILLA
+endif
+
 # OFFICIAL only when the build is signed with Project Catalyxx's own release
 # key: the tree's keys (make-keys.sh writes them to vendor/lineage-priv/keys)
 # must hold the certificate published here. Any other build of this source,
@@ -52,5 +67,5 @@ LINEAGE_VERSION = $(CATALYXX_DISPLAY_VERSION)
 LINEAGE_DISPLAY_VERSION = $(CATALYXX_DISPLAY_VERSION)
 
 # The flashable zip, without the codename:
-# Catalyxx-<version>-<date>-<buildtype>-<device>.zip
-LINEAGE_TARGET_PACKAGE = $(PRODUCT_OUT)/Catalyxx-$(CATALYXX_BUILD_VERSION).zip
+# Catalyxx-<version>-<date>-<buildtype>-<device>-<GAPPS|MICROG|VANILLA>.zip
+LINEAGE_TARGET_PACKAGE = $(PRODUCT_OUT)/Catalyxx-$(CATALYXX_BUILD_VERSION)-$(CATALYXX_PACKAGE_TYPE).zip

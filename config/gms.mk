@@ -59,3 +59,8 @@ DONT_DEXPREOPT_PREBUILTS := true
 # nothing it removes is something Pixel setup or Android depends on.
 
 endif
+
+# microG in place of GApps: WITH_MICROG, set in config/version.mk
+ifeq ($(WITH_MICROG),true)
+$(call inherit-product, vendor/microg/products/gms.mk)
+endif
