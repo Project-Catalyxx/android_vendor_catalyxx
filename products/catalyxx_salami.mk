@@ -15,6 +15,8 @@ CATALYXX_MAINTAINER := Brian_OP13
 # Device flags; README.md lists them all
 TARGET_ENABLE_BLUR := true
 SURFACE_FLINGER_BOOST := true
+# Dolby's app (packages/apps/LunarisDolby) replaces AudioFX
+TARGET_EXCLUDES_AUDIOFX := true
 
 $(call inherit-product, device/oneplus/salami/lineage_salami.mk)
 $(call inherit-product, vendor/catalyxx/config/common.mk)
