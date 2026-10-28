@@ -1,0 +1,47 @@
+//
+// SPDX-FileCopyrightText: 2026 Project Catalyxx
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Catalyxx's boot animation, fitted to TARGET_SCREEN_WIDTH/HEIGHT, which
+// vendor/lineage/config/BoardConfigSoong.mk hands Soong for LineageOS's own.
+genrule {
+    name: "gen-catalyxx-bootanimation.zip",
+    tools: ["soong_zip"],
+    tool_files: [
+        "bootanimation.tar",
+        "gen-bootanimation.sh",
+    ],
+    out: ["bootanimation.zip"],
+
+    cmd: select((soong_config_variable("lineage_bootanimation", "height"),
+                 soong_config_variable("lineage_bootanimation", "width")), {
+        (any @ height, any @ width):
+            "$(location gen-bootanimation.sh)" +
+            " $(out)" +
+            " $(genDir)" +
+            " $(location bootanimation.tar)" +
+            " $(location soong_zip)" +
+            " " + height +
+            " " + width,
+        (default, default):
+            "$(location gen-bootanimation.sh)" +
+            " $(out)" +
+            " $(genDir)" +
+            " $(location bootanimation.tar)" +
+            " $(location soong_zip)" +
+            " 0" +
+            " 0",
+    }),
+}
+
+prebuilt_media {
+    name: "catalyxx-bootanimation.zip",
+    src: ":gen-catalyxx-bootanimation.zip",
+    // Played through ro.product.bootanim.file (config/common.mk).
+    product_specific: true,
+    overrides: [
+        "bootanimation.zip",
+        "bootanimation-dark.zip",
+    ],
+}

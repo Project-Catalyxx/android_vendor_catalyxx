@@ -35,10 +35,16 @@ PRODUCT_PACKAGES += \
     CatalyxxSettingsProviderOverlay \
     CatalyxxUpdaterOverlay
 
-# Boot animation, in place of LineageOS's: vendor/lineage/config/BoardConfigSoong.mk
-# hands TARGET_BOOTANIMATION to the bootanimation.zip genrule as a prebuilt, which
-# copies it without tracking it, so a new animation needs a new file name.
-TARGET_BOOTANIMATION := vendor/catalyxx/bootanimation/bootanimation-1.zip
+# Boot animation, in place of LineageOS's: bootanimation/Android.bp fits one set of
+# frames to the device's TARGET_SCREEN_WIDTH/HEIGHT and overrides bootanimation.zip.
+# It can't take that file's path (Soong writes an install rule for every module, so two
+# modules can't share one), so ro.product.bootanim.file names it: bootanimation plays
+# that file in /product/media/ in place of bootanimation.zip.
+PRODUCT_PACKAGES += \
+    catalyxx-bootanimation.zip
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.product.bootanim.file=catalyxx-bootanimation.zip
 
 # Full OTA payload in zstd instead of xz: recovery unpacks it several times faster
 # when sideloading. The switch is read by Project Catalyxx's build/make.

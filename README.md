@@ -70,15 +70,19 @@ dodge sets `TARGET_ENABLE_BLUR`, `SURFACE_FLINGER_BOOST` and
 
 Boot animation and wallpaper by **Dapper Dan** & **dro223**.
 
-- `bootanimation/bootanimation-1.zip` replaces LineageOS's through `TARGET_BOOTANIMATION`.
+- `bootanimation/bootanimation.tar` replaces LineageOS's boot animation: it installs as
+  `/product/media/catalyxx-bootanimation.zip`, which `ro.product.bootanim.file` tells
+  bootanimation to play, and overrides `bootanimation.zip` and its `-dark` symlink.
   `bootanimation/make_bootanimation.py` builds it from `bootanimation_source.mp4` (their
-  video, muted): 1440x3168 at 24 fps, frames stored as JPEG at the video's own resolution
-  (bootanimation stretches each frame to the size in `desc.txt`), the intro to 6.5 s, the
-  rest looping with its last 0.75 s crossfaded into the frames before the loop so the seam
-  doesn't show.
-- **To replace it, save the new zip under the next number** (`bootanimation-2.zip`) and
-  point `TARGET_BOOTANIMATION` at it. LineageOS's genrule copies the file without tracking
-  it, so a new zip under the same name would not be picked up.
+  video, muted): the whole 1080x1920 frame at 24 fps, stored as JPEG, the intro to 6.5 s,
+  the rest looping with its last 0.75 s crossfaded into the frames before the loop so the
+  seam doesn't show.
+- **The build fits it to each screen** (`bootanimation/gen-bootanimation.sh`): bootanimation
+  draws at `desc.txt`'s size, centered, and never fits it to the display, so `desc.txt` gets
+  the device's `TARGET_SCREEN_WIDTH`x`HEIGHT` and each part's `trim.txt` draws the frames
+  at the screen's height, centered, the sides cropped (or black on a wider screen).
+- **To replace it, regenerate `bootanimation.tar`** with the script; the genrule tracks the
+  tar, so the next build picks it up.
 - `wallpaper/catalyxx_wallpaper.jpg` (1440x3168) is installed to `/product/media/wallpaper/`
   and named by `ro.config.wallpaper`, which WallpaperManager opens before any built-in
   default. Its gradient is rebuilt at full size from the 768x1376 original, the X enlarged.
