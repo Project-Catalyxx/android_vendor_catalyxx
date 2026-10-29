@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.catalyxx.overlay.lineagesetupwizard">
+
+    <!-- LineageOS's setup wizard, which runs in builds without GApps (Pixel setup
+         replaces it in GApps builds). Priority 10 so these win over the priority-1
+         auto-generated RROs that LineageOS ships for the same targets. -->
+    <overlay
+        android:targetPackage="org.lineageos.setupwizard"
+        android:isStatic="true"
+        android:priority="10" />
+</manifest>

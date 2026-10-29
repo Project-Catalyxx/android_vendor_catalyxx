@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- The wizard's name for the OS: "Welcome to Catalyxx", and the Seedvault
+         restore page's "If you have a Seedvault backup from Catalyxx or any other OS" -->
+    <string name="os_name" translatable="false">Catalyxx</string>
+
+    <!-- The recovery update page (only on devices with /vendor/bin/install-recovery.sh):
+         Catalyxx brands Lineage Recovery, so don't name it -->
+    <string name="update_recovery_title">Update recovery</string>
+    <string name="update_recovery_description">Updates the recovery on first boot after every update.</string>
+    <string name="update_recovery_setting">Update the recovery alongside the OS</string>
+</resources>

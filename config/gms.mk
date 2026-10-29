@@ -27,6 +27,10 @@ $(call inherit-product, vendor/pixel-style/config/common.mk)
 PRODUCT_PACKAGES += \
     CatalyxxSetupWizardOverlay
 
+# Pixel Launcher's "Meet your new Pixel" page at the end of setup says Catalyxx
+PRODUCT_PACKAGES += \
+    CatalyxxPixelLauncherOverlay
+
 # Settings' search bar, pointed at Google's SettingsIntelligence
 PRODUCT_PACKAGES += \
     CatalyxxSettingsGmsOverlay
@@ -63,4 +67,11 @@ endif
 # microG in place of GApps: WITH_MICROG, set in config/version.mk
 ifeq ($(WITH_MICROG),true)
 $(call inherit-product, vendor/microg/products/gms.mk)
+endif
+
+# Without GApps, LineageOS's own setup wizard runs (Pixel setup replaces it in GApps
+# builds): Catalyxx's name, logo and welcome animation in place of LineageOS's
+ifneq ($(WITH_GMS),true)
+PRODUCT_PACKAGES += \
+    CatalyxxLineageSetupWizardOverlay
 endif

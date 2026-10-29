@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
     vendor/catalyxx/wallpaper/catalyxx_wallpaper.jpg:$(TARGET_COPY_OUT_PRODUCT)/media/wallpaper/catalyxx_wallpaper.jpg
 
 # Component overrides: hides the Settings entry of LineageOS Trust, which
-# vendor/lineage no longer ships.
+# vendor/lineage no longer ships, and the setup wizard's LineageOS features page.
 PRODUCT_COPY_FILES += \
     vendor/catalyxx/config/sysconfig/catalyxx-component-overrides.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/catalyxx-component-overrides.xml
 

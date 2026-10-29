@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+
+     The finish page's logo, in place of LineageOS's: the round Catalyxx logo, centered
+     in the 512:260 shape of LineageOS's so it sits where that did. A bitmap in drawable/,
+     like the target's own logo.xml, with the image itself in drawable-nodpi.
+-->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/catalyxx_setup_logo" />

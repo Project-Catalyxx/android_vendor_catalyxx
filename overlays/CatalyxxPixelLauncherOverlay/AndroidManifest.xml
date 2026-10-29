@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.catalyxx.overlay.pixellauncher">
+
+    <!-- Pixel Launcher declares no overlayable resources, so any built-in overlay can
+         change them. Priority 10, over RisingOS's PixelLauncherOverlayCustom (0). -->
+    <overlay
+        android:targetPackage="com.google.android.apps.nexuslauncher"
+        android:isStatic="true"
+        android:priority="10" />
+</manifest>
