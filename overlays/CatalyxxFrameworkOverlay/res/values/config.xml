@@ -15,4 +15,11 @@
     <string-array name="theming_defaults" translatable="false">
         <item>*|RAINBOW|#874EFF</item>
     </string-array>
+
+    <!-- Keyboard vibration follows touch feedback's intensity, so the one Touch
+         slider sets taps and typing. Pixel's framework overlay turns separate
+         keyboard settings on, but only as an on/off switch at a fixed default
+         intensity, which no slider reaches. Keypress vibration can still be
+         turned off in the keyboard app. -->
+    <bool name="config_keyboardVibrationSettingsSupported">false</bool>
 </resources>
