@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- LineageParts' anonymous stats off by default: vendor/lineage's common
+         overlay turns them on, and they send a device hash, the model, the
+         Catalyxx version, country and carrier to stats.lineageos.org. They
+         can still be turned on by hand in LineageParts. -->
+    <bool name="def_stats_collection">false</bool>
+</resources>

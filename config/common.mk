@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CatalyxxFrameworkOverlay \
     CatalyxxLineageSdkOverlay \
+    CatalyxxLineageSettingsProviderOverlay \
     CatalyxxSettingsProviderOverlay \
     CatalyxxUpdaterOverlay
 

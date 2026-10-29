@@ -14,7 +14,8 @@
     <!-- LineageOS's setup wizard (builds without GApps) skips a page whose activity is
          disabled. Skip its "LineageOS features" page: its "Help improve" switch, on by
          default, sends usage stats to stats.lineageos.org, and its text points to
-         LineageOS's privacy policy. Skipped, the stats setting keeps its default, off. -->
+         LineageOS's privacy policy. Skipped, the stats setting keeps its default,
+         which CatalyxxLineageSettingsProviderOverlay turns off. -->
     <component-override package="org.lineageos.setupwizard">
         <component class=".settings.LineageSettingsActivity" enabled="false" />
     </component-override>

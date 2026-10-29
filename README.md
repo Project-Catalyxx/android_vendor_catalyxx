@@ -36,7 +36,7 @@ flashable zip comes out as
 | Build type | `OFFICIAL` when signed with Project Catalyxx's release key (its certificate is `config/releasekey.x509.pem`), `UNOFFICIAL` otherwise |
 | Updater | Reads `Project-Catalyxx/catalyxx_ota` instead of LineageOS's servers |
 | GApps | Rising's GApps setup exactly: RisingOS-Revived's `vendor/gms` (full set), `vendor/pixel-style` (Pixel setup props, Google app overlays, sounds) and `ThemeIcons`, all synced unforked through the local manifest. Rising's own SettingsGoogle/SystemUIGoogle are not included (they don't build on LineageOS). The removal list in `gms/Android.mk` is switched off. `config/gms.mk`; `WITH_GMS := false` builds without, `WITH_MICROG := true` builds with microG instead |
-| Setup | "Welcome to Catalyxx". With GApps: Pixel setup's names for the OS (`CatalyxxSetupWizardOverlay`) and Pixel Launcher's closing "Meet your new Pixel" page, which says "Meet Catalyxx" (`CatalyxxPixelLauncherOverlay`). Without GApps: LineageOS's wizard named Catalyxx, the round Catalyxx logo breathing on its welcome page and shown on its finish page (`CatalyxxLineageSetupWizardOverlay`), and its LineageOS features page skipped (`config/sysconfig`): that page's "Help improve" switch, on by default, sent usage stats to stats.lineageos.org, which now stay off |
+| Setup | "Welcome to Catalyxx". With GApps: Pixel setup's names for the OS (`CatalyxxSetupWizardOverlay`) and Pixel Launcher's closing "Meet your new Pixel" page, which says "Meet Catalyxx" (`CatalyxxPixelLauncherOverlay`). Without GApps: LineageOS's wizard named Catalyxx, the round Catalyxx logo breathing on its welcome page and shown on its finish page (`CatalyxxLineageSetupWizardOverlay`), and its LineageOS features page skipped (`config/sysconfig`): that page's "Help improve" switch, on by default, sent usage stats to stats.lineageos.org. Those stats are off by default in every build (`CatalyxxLineageSettingsProviderOverlay`; vendor/lineage's common overlay turns them on) |
 | Properties | `ro.catalyxx.version`, `.codename`, `.build.version`, `.display.version`, `.maintainer` |
 
 Brand colours: `#874EFF` is the system seed. `#A100F1`, the signature violet, is
@@ -163,7 +163,7 @@ config/version.mk     identity; included from each product's body, before its in
 config/common.mk      the layer: overlays and ro.catalyxx.* props
 config/flags.mk       what the device flags switch on (see Device flags)
 products/             catalyxx_<device>.mk + AndroidProducts.mk; overlay/<device>: About phone strings
-overlays/             runtime resource overlays (framework, lineage-sdk, SettingsProvider, Updater, setup)
+overlays/             runtime resource overlays (framework, lineage-sdk, SettingsProvider, LineageSettingsProvider, Updater, setup)
 bootanimation/        boot animation zip, its source video and the script that builds it
 wallpaper/            default wallpaper
 vendorsetup.sh        catalyze
