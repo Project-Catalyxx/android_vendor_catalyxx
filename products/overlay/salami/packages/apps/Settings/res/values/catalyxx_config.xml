@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- About phone: what the OnePlus 11 (salami) doesn't report itself -->
+<resources>
+    <string name="config_catalyxx_device_name" translatable="false">OnePlus 11</string>
+    <string name="config_catalyxx_device_soc" translatable="false">Snapdragon 8 Gen 2</string>
+    <string name="config_catalyxx_device_camera" translatable="false">50 MP + 48 MP + 32 MP</string>
+</resources>

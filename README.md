@@ -65,6 +65,23 @@ Only flags that something reads are listed. RisingOS's dodge tree also sets
 dodge and salami both set `TARGET_ENABLE_BLUR`, `SURFACE_FLINGER_BOOST` and
 `TARGET_EXCLUDES_AUDIOFX` to `true`.
 
+## About phone
+
+Settings' About phone cards and homepage device card read the battery and
+display from the device. Its retail name, chip and cameras come from three
+Settings strings, which a device sets in
+`products/overlay/<device>/packages/apps/Settings/res/values/catalyxx_config.xml`,
+added with `PRODUCT_PACKAGE_OVERLAYS` in its `catalyxx_<device>.mk`:
+
+| String | dodge | salami |
+|---|---|---|
+| `config_catalyxx_device_name` | OnePlus 13 | OnePlus 11 |
+| `config_catalyxx_device_soc` | Snapdragon 8 Elite | Snapdragon 8 Gen 2 |
+| `config_catalyxx_device_camera` | 50 MP + 50 MP + 50 MP | 50 MP + 48 MP + 32 MP |
+
+Without them the cards show `ro.product.marketname` or the model, the SoC
+model (`ro.soc.model`, e.g. `SM8550`), and no camera row.
+
 ## Boot animation and wallpaper
 
 Boot animation and wallpaper by **Dapper Dan** & **dro223**.
@@ -142,7 +159,7 @@ Catalyxx Lab, under Settings, turns each of these on and off. From adb:
 config/version.mk     identity; included from each product's body, before its inherits
 config/common.mk      the layer: overlays and ro.catalyxx.* props
 config/flags.mk       what the device flags switch on (see Device flags)
-products/             catalyxx_<device>.mk + AndroidProducts.mk
+products/             catalyxx_<device>.mk + AndroidProducts.mk; overlay/<device>: About phone strings
 overlays/             runtime resource overlays (framework, lineage-sdk, SettingsProvider, Updater)
 bootanimation/        boot animation zip, its source video and the script that builds it
 wallpaper/            default wallpaper
@@ -151,5 +168,7 @@ vendorsetup.sh        catalyze
 
 To add a device, copy `products/catalyxx_dodge.mk` to `catalyxx_<device>.mk`,
 change the inherited `lineage_<device>.mk`, `PRODUCT_NAME`, maintainer and
-device flags, and list it in `products/AndroidProducts.mk`. Keep anything device-specific out of
+device flags, copy `products/overlay/dodge` to `overlay/<device>` with the
+device's name, chip and cameras (see About phone), and list it in
+`products/AndroidProducts.mk`. Keep anything device-specific out of
 `config/` and `overlays/`, so every device gets the same Catalyxx.

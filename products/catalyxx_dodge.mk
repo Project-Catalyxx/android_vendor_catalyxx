@@ -21,4 +21,7 @@ TARGET_EXCLUDES_AUDIOFX := true
 $(call inherit-product, device/oneplus/dodge/lineage_dodge.mk)
 $(call inherit-product, vendor/catalyxx/config/common.mk)
 
+# About phone: the retail name, chip and cameras
+PRODUCT_PACKAGE_OVERLAYS += vendor/catalyxx/products/overlay/dodge
+
 PRODUCT_NAME := catalyxx_dodge

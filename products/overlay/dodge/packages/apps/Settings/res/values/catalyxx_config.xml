@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- About phone: what the OnePlus 13 (dodge) doesn't report itself -->
+<resources>
+    <string name="config_catalyxx_device_name" translatable="false">OnePlus 13</string>
+    <string name="config_catalyxx_device_soc" translatable="false">Snapdragon 8 Elite</string>
+    <string name="config_catalyxx_device_camera" translatable="false">50 MP + 50 MP + 50 MP</string>
+</resources>
