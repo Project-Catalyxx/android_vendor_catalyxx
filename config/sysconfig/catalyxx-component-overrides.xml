@@ -28,4 +28,14 @@
     <component-override package="org.lineageos.setupwizard">
         <component class=".settings.LineageSettingsActivity" enabled="false" />
     </component-override>
+
+    <!-- Pixel setup (builds with GApps) skips a step whose activity is disabled. Skip its
+         gestural navigation page: when no old phone was copied (source device manufacturer
+         empty) it sets long press power to Gemini (power_button_long_press 5) instead of
+         the power menu (config_longPressOnPowerBehavior 1), and it records a navigation
+         mode that setup applies when it finishes. Its gestural hints are off anyway
+         (CatalyxxFrameworkOverlay), so the page shows nothing. -->
+    <component-override package="com.google.android.pixel.setupwizard">
+        <component class=".user.GesturalNavWrapper" enabled="false" />
+    </component-override>
 </config>
