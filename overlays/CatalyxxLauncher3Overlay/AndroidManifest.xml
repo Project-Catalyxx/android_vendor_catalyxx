@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.catalyxx.overlay.launcher3">
+    <!-- Launcher3 declares no overlayable resources, so any built-in overlay can
+         change them. Priority 10, over the priority-1 auto-generated RROs. -->
+    <overlay
+        android:targetPackage="com.android.launcher3"
+        android:isStatic="true"
+        android:priority="10" />
+</manifest>

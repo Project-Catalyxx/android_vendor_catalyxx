@@ -27,7 +27,9 @@ $(call inherit-product, vendor/pixel-style/config/common.mk)
 PRODUCT_PACKAGES += \
     CatalyxxSetupWizardOverlay
 
-# Pixel Launcher's "Meet your new Pixel" page at the end of setup says Catalyxx
+# The launcher's "all set" page at the end of setup says "Meet Catalyxx": Launcher3's
+# (CatalyxxLauncher3Overlay, config/common.mk) or, with the Pixel Launcher picked,
+# the Pixel Launcher's, which says "Meet your new Pixel"
 PRODUCT_PACKAGES += \
     CatalyxxPixelLauncherOverlay
 
@@ -35,15 +37,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CatalyxxSettingsGmsOverlay
 
-# QuickSwitch: the Pixel Launcher stays the default home app; Launcher3
-# and Lawnchair can be picked in Catalyxx Lab > User interface > Home app
+# QuickSwitch: Launcher3 is the default home app, as without GApps; the Pixel
+# Launcher and Lawnchair can be picked in Catalyxx Lab > User interface > Home
+# app. persist.sys.default_launcher indexes config_launcherPackages
+# (frameworks/base custom_arrays.xml): 0 Launcher3, 1 Pixel Launcher, 2 Lawnchair.
 PRODUCT_PACKAGES += \
     Lawnchair \
     LawnchairOverlay \
     Lawnicons
 
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.sys.default_launcher=1 \
+    persist.sys.default_launcher=0 \
     persist.sys.quickswitch_pixel_shipped=1 \
     persist.sys.quickswitch_lawnchair_shipped=1
 

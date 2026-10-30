@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 Project Catalyxx
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- The "all set" page Launcher3 shows when Pixel setup finishes, which says
+         "You're ready to roll!": the same title as the Pixel Launcher's
+         (CatalyxxPixelLauncherOverlay) -->
+    <string name="allset_title_expressive_fixed">Meet Catalyxx</string>
+</resources>
