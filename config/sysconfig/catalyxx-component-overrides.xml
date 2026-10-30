@@ -9,6 +9,15 @@
          still inject into Settings > Privacy. -->
     <component-override package="org.lineageos.lineageparts">
         <component class=".trust.TrustPreferences" enabled="false" />
+        <!-- LineageOS statistics: no reports to stats.lineageos.org from Catalyxx (a
+             device hash, the model, the Catalyxx version, country and carrier), even
+             when the "Stats collection" switch is on. Off by default as well
+             (CatalyxxLineageSettingsProviderOverlay), but on salami it turned itself
+             back on once, cause unknown. These start the report at boot, build it and
+             upload it. -->
+        <component class=".lineagestats.ReportingServiceManager" enabled="false" />
+        <component class=".lineagestats.ReportingService" enabled="false" />
+        <component class=".lineagestats.StatsUploadJobService" enabled="false" />
     </component-override>
 
     <!-- LineageOS's setup wizard (builds without GApps) skips a page whose activity is
