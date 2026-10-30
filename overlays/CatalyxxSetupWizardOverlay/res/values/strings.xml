@@ -10,4 +10,10 @@
     <string name="deferred_setup_wizard_title">Finish setting up Catalyxx</string>
     <string name="device_name">Catalyxx</string>
     <string name="setup_wizard_title">Catalyxx Setup</string>
+
+    <!-- Where setup ends: the Pixel Launcher's "all set" page. Launcher3 is the default
+         home app (config/gms.mk) and QuickSwitch hides the Pixel Launcher, so that page
+         couldn't be found and setup ended on the home screen without it. Launcher3 has
+         the same page ("Meet Catalyxx", CatalyxxLauncher3Overlay). -->
+    <string name="exit_to_action_in_initial_setup" translatable="false">com.android.launcher3/com.android.quickstep.action.GESTURE_ONBOARDING_ALL_SET</string>
 </resources>
