@@ -8,4 +8,10 @@
          "You're ready to roll!": the same title as the Pixel Launcher's
          (CatalyxxPixelLauncherOverlay) -->
     <string name="allset_title_expressive_fixed">Meet Catalyxx</string>
+
+    <!-- The app's name (LineageOS calls it Trebuchet): app info, the home app picker,
+         QuickSwitch's recents. derived_app_name points at lineageos_app_name; both are
+         overlaid in case one is read on its own. -->
+    <string name="lineageos_app_name" translatable="false">Catalyxx Launcher</string>
+    <string name="derived_app_name" translatable="false">Catalyxx Launcher</string>
 </resources>
