@@ -33,6 +33,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CatalyxxPixelLauncherOverlay
 
+# Start in 3-button navigation: pixel-style puts the gestural navigation bar first in
+# ro.boot.vendor.overlay.theme (vendor/build.prop), the overlays the system turns on
+# for a new phone. init reads product/etc/build.prop after vendor's and the later value
+# wins, so this is pixel-style's list without the gestural navigation bar. Keep it in
+# step with vendor/pixel-style/config/common.mk.
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.boot.vendor.overlay.theme=com.google.android.systemui.gxoverlay_gms
+
 # Settings' search bar, pointed at Google's SettingsIntelligence
 PRODUCT_PACKAGES += \
     CatalyxxSettingsGmsOverlay
