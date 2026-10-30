@@ -22,4 +22,13 @@
          intensity, which no slider reaches. Keypress vibration can still be
          turned off in the keyboard app. -->
     <bool name="config_keyboardVibrationSettingsSupported">false</bool>
+
+    <!-- Start in 3-button navigation, with GApps too. Pixel's framework overlay
+         (pixel-style PixelConfigOverlay2019, priority 6) turns on gestural
+         navigation hints, meant for devices that default to gestures: Pixel
+         setup's gestural page (com.google.android.pixel.setupwizard
+         GesturalNavWrapper) then picks gesture navigation, applied when setup
+         finishes. Gestures stay a tap away in Settings > System > Navigation
+         mode. -->
+    <bool name="config_showGesturalNavigationHints">false</bool>
 </resources>
